@@ -20,6 +20,7 @@ export function DifferenceSection() {
         <div className="mb-12 grid grid-cols-1 gap-6 sm:mb-16 lg:grid-cols-12">
           <h2
             id="difference-title"
+            data-reveal="lines"
             className="font-display text-2xl leading-tight font-medium tracking-tight text-white sm:text-4xl lg:col-span-7 lg:text-headline-xl lg:leading-(--text-headline-xl--line-height)"
           >
             {content.title}
@@ -36,7 +37,10 @@ export function DifferenceSection() {
             key={pillar.title}
             className={cn(index === content.pillars.length - 1 && 'md:col-span-2 lg:col-span-1')}
           >
-            <article className="flex h-full flex-col justify-between rounded-lg border border-white/[0.08] bg-ink-700 p-6 transition-colors hover:border-white/20 sm:p-8">
+            <article
+              data-tilt
+              className="spotlight flex h-full flex-col justify-between rounded-lg border border-white/[0.08] bg-ink-700 p-6 transition-colors hover:border-white/20 sm:p-8"
+            >
               <div>
                 <div className="mb-6 flex items-center justify-between border-b border-white/[0.08] pb-4 sm:mb-8">
                   <span className="text-xs font-medium text-brand">{pillar.eyebrow}</span>
@@ -57,15 +61,19 @@ export function DifferenceSection() {
 
       <Reveal className="w-full overflow-hidden rounded-lg border border-white/[0.08] bg-ink-700">
         <div className="grid grid-cols-1 items-stretch lg:grid-cols-12">
-          <div className="relative min-h-[260px] sm:min-h-[340px] lg:col-span-7 lg:min-h-[420px]">
+          <div
+            data-reveal="media"
+            className="relative min-h-[260px] overflow-hidden sm:min-h-[340px] lg:col-span-7 lg:min-h-[420px]"
+          >
             <img
+              data-parallax
               src={collaboration.image.src}
               alt={collaboration.image.alt}
               width={collaboration.image.width}
               height={collaboration.image.height}
               loading="lazy"
               decoding="async"
-              className="absolute inset-0 size-full object-cover brightness-[0.85] contrast-110 grayscale"
+              className="absolute inset-x-0 -top-[10%] h-[120%] w-full object-cover brightness-[0.85] contrast-110 grayscale"
             />
             <div className="absolute inset-0 hidden bg-gradient-to-r from-transparent to-ink-700 opacity-60 lg:block" />
           </div>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-label="Neural network graph">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1220"/><stop offset="1" stop-color="#05080f"/></linearGradient>
+    <radialGradient id="halo" cx="0.55" cy="0.48" r="0.55"><stop offset="0" stop-color="#00d2ff" stop-opacity="0.35"/><stop offset="1" stop-color="#00d2ff" stop-opacity="0"/></radialGradient>
+    <radialGradient id="node"><stop offset="0" stop-color="#ffffff"/><stop offset="0.35" stop-color="#68d5ff"/><stop offset="1" stop-color="#00a3ff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="800" height="560" fill="url(#bg)"/>
+  <rect width="800" height="560" fill="url(#halo)"/>
+  <g stroke="#68d5ff" stroke-opacity="0.22" stroke-width="1" fill="none">
+    <path d="M120 120 L300 90 L300 200 L120 280 L300 330 L300 440 L120 420 M120 120 L300 200 M120 280 L300 90 M120 280 L300 440 M120 420 L300 330"/>
+    <path d="M300 90 L500 160 L500 280 L300 200 M300 330 L500 280 L500 400 L300 440 M300 90 L500 280 M300 440 L500 160 M300 200 L500 400"/>
+    <path d="M500 160 L680 230 L500 280 M500 400 L680 330 L500 280 M500 160 L680 330 M500 400 L680 230"/>
+  </g>
+  <path d="M120 280 L300 200 L500 280 L680 230" fill="none" stroke="#00e5ff" stroke-width="2" stroke-opacity="0.85"/>
+  <g fill="url(#node)">
+    <circle cx="120" cy="120" r="14"/><circle cx="120" cy="280" r="18"/><circle cx="120" cy="420" r="14"/>
+    <circle cx="300" cy="90" r="14"/><circle cx="300" cy="200" r="22"/><circle cx="300" cy="330" r="14"/><circle cx="300" cy="440" r="14"/>
+    <circle cx="500" cy="160" r="14"/><circle cx="500" cy="280" r="30"/><circle cx="500" cy="400" r="14"/>
+    <circle cx="680" cy="230" r="20"/><circle cx="680" cy="330" r="14"/>
+  </g>
+  <g font-family="JetBrains Mono, monospace" font-size="13" fill="#68d5ff" fill-opacity="0.7" letter-spacing="2">
+    <text x="40" y="520">AGENT GRAPH · L4</text><text x="640" y="520">p99 11ms</text>
+  </g>
+</svg>

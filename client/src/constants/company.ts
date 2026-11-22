@@ -1,7 +1,5 @@
 export const COMPANY = {
   name: 'HALCER',
-  studio: 'HALCER Applied Intelligence Studio',
-  offices: ['Zurich', 'London', 'San Francisco'],
   email: 'hello@halcer.com',
   address: { street: 'Gotthardstrasse 26', city: 'Zurich', postalCode: '8002', country: 'CH' },
   summary:

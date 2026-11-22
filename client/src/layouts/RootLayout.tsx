@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router';
 
+import { PointerEffects } from '@/components/animations/PointerEffects';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { RouteScrollManager } from '@/router/RouteScrollManager';
@@ -21,6 +22,7 @@ export function RootLayout() {
         <Outlet />
       </main>
       <SiteFooter />
+      <PointerEffects />
     </>
   );
 }

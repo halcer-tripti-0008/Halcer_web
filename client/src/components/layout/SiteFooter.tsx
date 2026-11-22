@@ -23,6 +23,7 @@ export function SiteFooter() {
                   <a
                     href={social.href}
                     aria-label={social.label}
+                    data-magnetic="0.4"
                     className="flex size-10 items-center justify-center rounded-pill border border-white/20 text-white/80 transition-colors hover:border-white hover:text-white"
                   >
                     <SocialIcon id={social.id} />
@@ -52,7 +53,7 @@ export function SiteFooter() {
                     <SmartLink
                       href={link.href}
                       className={cn(
-                        'block py-1 transition-colors hover:text-white',
+                        'link-underline inline-block py-1 transition-colors hover:text-white',
                         isActive(link.href) && 'underline decoration-white/60 underline-offset-4',
                       )}
                     >

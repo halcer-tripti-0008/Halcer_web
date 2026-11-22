@@ -1,8 +1,6 @@
 import { lazy, Suspense } from 'react';
 
 import { Reveal } from '@/components/animations/Reveal';
-import { Pill } from '@/components/ui/Pill';
-import { StatusDot } from '@/components/ui/StatusDot';
 import { COMPANY } from '@/constants/company';
 import { SECTION_IDS } from '@/constants/navigation';
 import { contactContent as content } from '@/content/home';
@@ -28,9 +26,10 @@ export function ContactSection() {
       </p>
 
       <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-16">
-        <Reveal className="flex flex-col justify-between space-y-6 sm:space-y-10 lg:col-span-8">
+        <Reveal className="flex flex-col space-y-6 sm:space-y-10 lg:col-span-8">
           <h2
             id="contact-title"
+            data-reveal="lines"
             className="max-w-2xl font-display text-2xl leading-[1.15] font-bold tracking-tight text-white sm:text-[36px] sm:leading-[1.12] md:text-[44px] lg:text-[50px]"
           >
             {content.titleLines.map((line, index) => (
@@ -44,20 +43,6 @@ export function ContactSection() {
               </span>
             ))}
           </h2>
-          <div className="flex flex-wrap items-center gap-3 pt-2 text-xs text-haze/70 sm:gap-4">
-            <Pill variant="subtle" className="py-1.5 text-haze/70">
-              <StatusDot tone="glow" className="shadow-[0_0_8px_#00E5FF]" />
-              <span>{content.responseTime}</span>
-            </Pill>
-            <ul className="flex flex-wrap items-center gap-2 text-haze/60">
-              {content.assurances.map((assurance, index) => (
-                <li key={assurance} className="flex items-center gap-2">
-                  {index > 0 && <span aria-hidden="true">•</span>}
-                  {assurance}
-                </li>
-              ))}
-            </ul>
-          </div>
         </Reveal>
 
         <div className="flex w-full flex-col space-y-6 pt-2 lg:col-span-4">

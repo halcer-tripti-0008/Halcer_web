@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-label="Performance telemetry chart">
+  <defs>
+    <linearGradient id="bg" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1a2e"/><stop offset="1" stop-color="#05080f"/></linearGradient>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00d2ff" stop-opacity="0.35"/><stop offset="1" stop-color="#00d2ff" stop-opacity="0"/></linearGradient>
+    <pattern id="grid" width="80" height="56" patternUnits="userSpaceOnUse"><path d="M80 0H0V56" fill="none" stroke="#68d5ff" stroke-opacity="0.08"/></pattern>
+  </defs>
+  <rect width="800" height="560" fill="url(#bg)"/>
+  <rect x="40" y="60" width="720" height="392" fill="url(#grid)"/>
+  <path d="M40 380 C120 360 150 300 220 310 S330 250 390 240 S480 180 540 190 S640 120 760 110 V452 H40 Z" fill="url(#area)"/>
+  <path d="M40 380 C120 360 150 300 220 310 S330 250 390 240 S480 180 540 190 S640 120 760 110" fill="none" stroke="#00e5ff" stroke-width="2.5"/>
+  <path d="M40 420 C140 410 220 395 320 380 S520 350 760 330" fill="none" stroke="#68d5ff" stroke-opacity="0.35" stroke-width="1.5" stroke-dasharray="6 6"/>
+  <g fill="#05080f" stroke="#e2f6ff" stroke-width="2"><circle cx="220" cy="310" r="6"/><circle cx="390" cy="240" r="6"/><circle cx="540" cy="190" r="6"/></g>
+  <circle cx="760" cy="110" r="7" fill="#00e5ff" stroke="#e2f6ff" stroke-width="2"/>
+  <line x1="540" y1="190" x2="540" y2="452" stroke="#68d5ff" stroke-opacity="0.3" stroke-dasharray="3 5"/>
+  <g font-family="JetBrains Mono, monospace" font-size="13" fill="#68d5ff" fill-opacity="0.7" letter-spacing="2">
+    <text x="40" y="520">RESILIENCE AUDIT · SLO 99.999%</text><text x="620" y="520">+38% thrpt</text>
+  </g>
+</svg>

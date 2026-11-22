@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-label="Distributed node mesh">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#05080f"/><stop offset="1" stop-color="#0b1a2e"/></linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#00a3ff" stop-opacity="0.3"/><stop offset="1" stop-color="#00a3ff" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#68d5ff" stroke-opacity="0.07"/></pattern>
+  </defs>
+  <rect width="800" height="560" fill="url(#bg)"/>
+  <rect width="800" height="560" fill="url(#grid)"/>
+  <rect width="800" height="560" fill="url(#halo)"/>
+  <g fill="none" stroke="#68d5ff">
+    <circle cx="400" cy="280" r="190" stroke-opacity="0.18" stroke-dasharray="2 8"/>
+    <circle cx="400" cy="280" r="120" stroke-opacity="0.3"/>
+    <circle cx="400" cy="280" r="60" stroke-opacity="0.45"/>
+  </g>
+  <g stroke="#00e5ff" stroke-opacity="0.55" stroke-width="1.5" fill="none">
+    <path d="M400 280 L400 160 M400 280 L504 220 M400 280 L504 340 M400 280 L400 400 M400 280 L296 340 M400 280 L296 220"/>
+    <path d="M400 160 L504 220 L504 340 L400 400 L296 340 L296 220 Z"/>
+    <path d="M400 90 L400 160 M565 185 L504 220 M565 375 L504 340 M400 470 L400 400 M235 375 L296 340 M235 185 L296 220" stroke-opacity="0.3"/>
+  </g>
+  <circle cx="400" cy="280" r="9" fill="#e2f6ff"/>
+  <g fill="#00e5ff"><circle cx="400" cy="160" r="6"/><circle cx="504" cy="220" r="6"/><circle cx="504" cy="340" r="6"/><circle cx="400" cy="400" r="6"/><circle cx="296" cy="340" r="6"/><circle cx="296" cy="220" r="6"/></g>
+  <g fill="#68d5ff" fill-opacity="0.6"><circle cx="400" cy="90" r="4"/><circle cx="565" cy="185" r="4"/><circle cx="565" cy="375" r="4"/><circle cx="400" cy="470" r="4"/><circle cx="235" cy="375" r="4"/><circle cx="235" cy="185" r="4"/></g>
+  <g font-family="JetBrains Mono, monospace" font-size="13" fill="#68d5ff" fill-opacity="0.7" letter-spacing="2">
+    <text x="40" y="520">CONSENSUS RING · 6/6 HEALTHY</text><text x="610" y="520">4.8M ops/s</text>
+  </g>
+</svg>

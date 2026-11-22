@@ -1,9 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 
 import { Reveal, RevealGroup, RevealItem } from '@/components/animations/Reveal';
-import { Pill } from '@/components/ui/Pill';
 import { Section } from '@/components/ui/Section';
-import { StatusDot } from '@/components/ui/StatusDot';
 import { SECTION_IDS } from '@/constants/navigation';
 import { industriesContent as content } from '@/content/home';
 
@@ -17,12 +15,9 @@ export function IndustriesSection() {
     >
       <Reveal className="mb-10 flex flex-col justify-between border-b border-white/[0.08] pb-8 sm:mb-16 md:flex-row md:items-end">
         <div>
-          <Pill variant="glowSoft" className="mb-4 px-3.5 py-1.5">
-            <StatusDot tone="cyan" size="size-1.5" />
-            <span className="font-medium">{content.eyebrow}</span>
-          </Pill>
           <h2
             id="industries-title"
+            data-reveal="lines"
             className="max-w-3xl font-display text-2xl leading-tight font-medium tracking-tight text-white sm:text-4xl lg:text-headline-xl lg:leading-(--text-headline-xl--line-height)"
           >
             {content.titleStart}{' '}
@@ -37,7 +32,10 @@ export function IndustriesSection() {
       <RevealGroup className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {content.industries.map(({ icon: Icon, ...industry }) => (
           <RevealItem key={industry.title}>
-            <article className="group flex h-full flex-col justify-between rounded-2xl border border-white/[0.08] bg-[rgba(18,22,32,0.7)] p-6 backdrop-blur-[12px] transition-all duration-300 hover:border-white/20 hover:shadow-xl sm:p-8 lg:p-10">
+            <article
+              data-tilt
+              className="group spotlight flex h-full flex-col justify-between rounded-2xl border border-white/[0.08] bg-[rgba(18,22,32,0.7)] p-6 backdrop-blur-[12px] transition-[border-color,box-shadow] duration-300 hover:border-white/20 hover:shadow-xl sm:p-8 lg:p-10"
+            >
               <div className="space-y-6">
                 <div>
                   <div className="mb-6 flex items-center justify-between">

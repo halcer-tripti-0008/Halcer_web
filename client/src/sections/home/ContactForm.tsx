@@ -126,8 +126,9 @@ export function ContactForm() {
       <div className="pt-2">
         <button
           type="submit"
+          data-magnetic="0.25"
           disabled={mutation.isPending}
-          className="group inline-flex min-h-11 w-full cursor-pointer items-center justify-between rounded-pill bg-white px-6 py-3.5 text-sm font-medium tracking-tight text-black shadow-[0_4px_20px_rgba(255,255,255,0.15)] transition-all duration-200 hover:scale-[1.01] hover:bg-white/90 hover:shadow-xl disabled:cursor-wait disabled:opacity-80"
+          className="group shine inline-flex min-h-11 w-full cursor-pointer items-center justify-between rounded-pill bg-white px-6 py-3.5 text-sm font-medium tracking-tight text-black shadow-[0_4px_20px_rgba(255,255,255,0.15)] transition-[background-color,box-shadow] duration-200 hover:bg-white/90 hover:shadow-xl disabled:cursor-wait disabled:opacity-80"
         >
           <span>{mutation.isPending ? 'Sending…' : contactContent.submit}</span>
           <span className="ml-2 flex size-7 shrink-0 items-center justify-center rounded-pill bg-black/10 transition-transform group-hover:translate-x-0.5">

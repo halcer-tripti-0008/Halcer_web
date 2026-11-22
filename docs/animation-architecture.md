@@ -141,7 +141,40 @@ Rules:
 5. Don't add `scroll-behavior: smooth` in CSS (the base layer forces `auto`).
 6. Touch devices use native scrolling (`syncTouch: false`), which is deliberate for feel and battery.
 
-## 7. Conflict checklist (review every animation PR)
+## 7. The homepage motion system (data attributes)
+
+The homepage is animated declaratively: components stay plain markup and opt into effects with
+attributes. All of it is GSAP + CSS; Motion is used only for the mobile menu.
+
+| Attribute / class                             | Where it works                                            | Effect                                                                                                 |
+| --------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `<Reveal>` / `<RevealGroup>` + `<RevealItem>` | wrappers                                                  | Children fade up from a soft blur (block) or rise with a slight 3D tip (card groups), once, on scroll  |
+| `data-reveal="lines"`                         | headings inside a Reveal                                  | Each line rises out of its own mask (SplitText), reverted afterwards so text reflows normally          |
+| `data-reveal="media"`                         | image frames inside a Reveal                              | Clip-path wipe opens upwards while the image settles from a zoom                                       |
+| `data-parallax`                               | an oversized `<img>` inside a `data-reveal="media"` frame | Scroll-scrubbed drift (desktop). Oversize it in markup (e.g. `-top-[8%] h-[116%]`) so edges never show |
+| `data-tilt` (+ `spotlight` class)             | cards                                                     | 3D tilt toward the pointer and a cursor-following glow                                                 |
+| `data-magnetic="0.3"`                         | buttons/links                                             | Leans toward the pointer (the value is the strength), springs back                                     |
+| `data-preview-index` + `cursorPreview()`      | list rows                                                 | A preview image follows the cursor (Capabilities)                                                      |
+| `link-underline`, `shine` classes             | links / solid buttons                                     | Wipe-in underline; light sweep on hover                                                                |
+
+Implementation lives in `animations/gsap/reveal.ts`, `animations/gsap/cursorPreview.ts` and
+`components/animations/PointerEffects.tsx` (one passive `pointermove` listener drives the cursor
+ring, magnetic pull and tilt; there is no React state, so the pointer never re-renders anything).
+
+**Rules that keep these effects from fighting each other**
+
+- Elements with `data-tilt` or `data-magnetic` must not use `transition-all` / `transition-transform`
+  or Tailwind `scale-*` / `translate-*` / `rotate-*` classes: a CSS transition on the same property
+  lags behind GSAP, and GSAP absorbs individual transform properties into its own matrix. Put hover
+  movement on a _child_ element instead.
+- Pointer effects run only on fine pointers without reduced motion (`isFinePointer` /
+  `reduceMotion` in `createResponsiveAnimation`). Touch devices and reduced-motion users get the
+  finished layout with nothing hidden or moving.
+- Every block creates one ScrollTrigger that fires once and is discarded. Blocks already scrolled past
+  (e.g. arriving via `#contact`) still reveal.
+- Never hand GSAP an empty target list (it logs a warning): guard with `.length`.
+
+## 8. Conflict checklist (review every animation PR)
 
 - [ ] GSAP imported from `@/animations/gsap` and code lives inside `useGSAP` with `scope`
 - [ ] No element has the same property animated by both GSAP and Motion (e.g. GSAP owns `y` on the wrapper, Motion owns `scale` on the child)

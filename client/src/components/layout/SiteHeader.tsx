@@ -1,7 +1,8 @@
 import { Menu, User, X } from 'lucide-react';
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { Link } from 'react-router';
 
+import { createResponsiveAnimation, gsap, GSAP_EASE, useGSAP } from '@/animations/gsap';
 import { LogoMark } from '@/components/common/Logo';
 import { SmartLink } from '@/components/common/SmartLink';
 import { ElectricLink } from '@/components/ui/ElectricLink';
@@ -21,13 +22,33 @@ export function SiteHeader() {
     setMenuOpen(false);
   }, []);
   const isActive = useIsActiveHref();
+  const headerRef = useRef<HTMLElement>(null);
+
+  // Entrance: the bar settles in from above while its contents stagger in.
+  useGSAP(
+    () => {
+      createResponsiveAnimation(({ reduceMotion }) => {
+        if (reduceMotion) return undefined;
+        gsap
+          .timeline({ defaults: { ease: GSAP_EASE.out } })
+          .from(headerRef.current, { yPercent: -100, duration: 1, clearProps: 'transform' })
+          .from('[data-header-item]', { autoAlpha: 0, y: -12, duration: 0.8, stagger: 0.07 }, 0.25);
+        return undefined;
+      });
+    },
+    { scope: headerRef },
+  );
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-glow-500/18 bg-ink-950/85 shadow-[0_4px_30px_rgba(0,0,0,0.5)] backdrop-blur-[16px]">
+    <header
+      ref={headerRef}
+      className="fixed top-0 z-50 w-full border-b border-glow-500/18 bg-ink-950/85 shadow-[0_4px_30px_rgba(0,0,0,0.5)] backdrop-blur-[16px]"
+    >
       <div className="flex h-20 w-full items-center justify-between px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         <Link
           to={ROUTES.home}
           onClick={closeMenu}
+          data-header-item
           className="flex items-center gap-4 text-white"
           aria-label={`${COMPANY.name} home`}
         >
@@ -37,7 +58,11 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-6 lg:flex xl:gap-8">
+        <nav
+          aria-label="Primary"
+          data-header-item
+          className="hidden items-center gap-6 lg:flex xl:gap-8"
+        >
           {PRIMARY_NAV.map((link) => {
             const active = isActive(link.href);
             return (
@@ -49,7 +74,7 @@ export function SiteHeader() {
                   'border-b-2 py-2 transition-colors',
                   active
                     ? 'border-glow-500 font-display text-sm font-semibold text-white [text-shadow:0_0_12px_rgba(0,210,255,0.5)]'
-                    : 'border-transparent text-body-sm text-haze hover:text-fog',
+                    : 'link-underline border-transparent text-body-sm text-haze hover:text-fog',
                 )}
               >
                 {link.label}
@@ -58,7 +83,7 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div data-header-item className="flex items-center gap-3">
           <ElectricLink href={CONTACT_HREF} size="compact" className="hidden sm:inline-flex">
             Get in Touch
           </ElectricLink>

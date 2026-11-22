@@ -10,7 +10,7 @@ import { CONTACT_HREF, SECTION_IDS } from '@/constants/navigation';
 import { insightsContent as content } from '@/content/home';
 
 const card =
-  'rounded-4xl border border-slate-200/80 bg-paper shadow-sm transition-all duration-300 hover:shadow-md';
+  'spotlight [--spot-color:rgba(2,132,199,0.07)] rounded-4xl border border-slate-200/80 bg-paper shadow-sm transition-[box-shadow] duration-300 hover:shadow-md';
 
 export function InsightsSection() {
   const { archive, cohort, sla, flagship } = content;
@@ -28,6 +28,7 @@ export function InsightsSection() {
           </Pill>
           <h2
             id="insights-title"
+            data-reveal="lines"
             className="font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-headline-xl lg:font-medium"
           >
             {content.titleStart}{' '}
@@ -47,9 +48,12 @@ export function InsightsSection() {
       <RevealGroup className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-12">
         {/* Archive card */}
         <RevealItem className="lg:col-span-5">
-          <article className={`${card} flex h-full flex-col justify-between p-6 sm:p-10`}>
+          <article data-tilt className={`${card} flex h-full flex-col justify-between p-6 sm:p-10`}>
             <div className="mb-6 flex w-full items-center justify-center overflow-hidden rounded-2xl border border-slate-200/60 bg-white/70 p-3 sm:mb-8 sm:p-4">
-              <div className="relative h-44 w-full overflow-hidden rounded-xl sm:h-56">
+              <div
+                data-reveal="media"
+                className="relative h-44 w-full overflow-hidden rounded-xl sm:h-56"
+              >
                 {/* Design photo unavailable from the Stitch export — replace with the real asset. */}
                 <ImagePlaceholder
                   label="Precision engineering cleanroom lab"
@@ -68,7 +72,8 @@ export function InsightsSection() {
               <div className="pt-2">
                 <SmartLink
                   href={CONTACT_HREF}
-                  className="group inline-flex min-h-11 items-center gap-3 rounded-pill bg-black px-6 py-3.5 text-sm font-medium text-white shadow-sm transition-all duration-200 hover:bg-slate-800"
+                  data-magnetic="0.3"
+                  className="group shine inline-flex min-h-11 items-center gap-3 rounded-pill bg-black px-6 py-3.5 text-sm font-medium text-white shadow-sm transition-colors duration-200 hover:bg-slate-800"
                 >
                   <span>{archive.cta}</span>
                   <span className="flex size-6 items-center justify-center rounded-pill bg-white/20 transition-transform group-hover:translate-x-0.5">
@@ -135,10 +140,6 @@ export function InsightsSection() {
             <article className={`${card} flex flex-1 flex-col justify-between p-6 sm:p-8 lg:p-10`}>
               <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-12 md:gap-8">
                 <div className="md:col-span-7">
-                  <Pill variant="white" className="mb-4 text-accent">
-                    <StatusDot tone="accent" size="size-1.5" />
-                    <span>{flagship.badge}</span>
-                  </Pill>
                   <h3 className="mb-3 text-lg leading-snug font-bold tracking-tight text-slate-900 sm:text-xl lg:text-2xl">
                     {flagship.title}
                   </h3>
@@ -162,11 +163,14 @@ export function InsightsSection() {
                   </div>
                 </div>
                 <div className="md:col-span-5">
-                  <div className="group/img relative h-40 w-full overflow-hidden rounded-2xl border border-slate-200/80 shadow-sm sm:h-48 md:h-52">
+                  <div
+                    data-reveal="media"
+                    className="relative h-40 w-full overflow-hidden rounded-2xl border border-slate-200/80 shadow-sm sm:h-48 md:h-52"
+                  >
                     {/* Design photo unavailable from the Stitch export — replace with the real asset. */}
                     <ImagePlaceholder
                       label="HALCER architecture squad collaborating"
-                      className="size-full transition-transform duration-500 group-hover/img:scale-105"
+                      className="size-full"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
                   </div>

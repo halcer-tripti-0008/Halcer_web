@@ -222,7 +222,7 @@ How they're wired:
 3. `MotionProvider` wraps the app in `LazyMotion` (features loaded asynchronously, `strict`) and `MotionConfig reducedMotion="user"`.
 4. Reduced motion is respected at every layer: Lenis (`respectReducedMotion`), Motion (`reducedMotion="user"`), GSAP (`createResponsiveAnimation` → `reduceMotion` condition), and CSS (global media query).
 
-**The golden rules** (details and examples in [docs/animation-architecture.md](docs/animation-architecture.md)):
+**The golden rules** (details and examples in [docs/animation-architecture.md](docs/animation-architecture.md), including the homepage motion system: `data-reveal`, `data-tilt`, `data-magnetic`, cursor preview):
 
 - Import GSAP **only** from `@/animations/gsap`, and write GSAP in React **only** inside `useGSAP(() => …, { scope })`.
 - Use `m.div` (from `motion/react`), not `motion.div`. `strict` mode will throw otherwise.

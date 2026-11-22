@@ -3,7 +3,11 @@ import { BadgeCheck, Bot, Box, ChartSpline, Cpu, Microscope, Zap } from 'lucide-
 
 import collaborationStudio from '@/assets/images/collaboration-studio.jpg';
 import heroServerRack from '@/assets/images/hero-server-rack.png';
-import philosophyPavilion from '@/assets/images/philosophy-pavilion.jpg';
+import systemsArchitectureStudio from '@/assets/images/systems-architecture-studio.jpg';
+import practiceAdvisory from '@/assets/images/practices/advisory.svg';
+import practiceAppliedAi from '@/assets/images/practices/applied-ai.svg';
+import practiceCloudSecurity from '@/assets/images/practices/cloud-security.svg';
+import practiceDistributed from '@/assets/images/practices/distributed-systems.svg';
 
 /**
  * Home page copy and data, transcribed from the Stitch design.
@@ -21,13 +25,17 @@ export const heroContent = {
   description:
     'We partner with visionary leaders to bridge thoughtful software craftsmanship with frontier intelligence—creating high-impact platforms designed for global scale.',
   primaryCta: 'Start an Engagement',
-  secondaryCta: 'Explore Capabilities',
+  secondaryCta:
+    'Explore Capabilities' /** Floating glass cards beside the headline (desktop). Figures reuse the page's own stats. */,
+  cards: {
+    latency: { label: 'Inference response', value: '<15ms', caption: 'Multi-agent · p99' },
+    throughput: { label: 'Throughput', value: 4.8, unit: 'M ops/s', caption: 'Per node cluster' },
+    reliability: { label: 'Reliability', value: '99.999%' },
+    platforms: '340+ platforms live',
+    volume: '$4.2B+ secured',
+  },
   cluster: {
-    title: 'HALCER COMPUTE CLUSTER // NODE 01',
-    meta: ['40Gbps Fiber Ring', 'STATUS: OPTIMAL'],
-    status: 'SYSTEM ONLINE',
     telemetry: {
-      label: 'TELEMETRY RUNTIME',
       title: 'The bench for AI, GenAI, and data.',
       body: 'Low-latency deterministic orchestration delivered directly on high-density specialized compute blades.',
     },
@@ -38,33 +46,9 @@ export const heroContent = {
     width: 512,
     height: 288,
   } satisfies ImageAsset,
-  stats: [
-    {
-      label: 'System Reliability',
-      value: '99.999%',
-      body: 'Continuous uptime across multi-region production clusters.',
-    },
-    {
-      label: 'Production Scale',
-      value: '340+',
-      body: 'Active enterprise platforms serving millions of concurrent requests.',
-    },
-    {
-      label: 'Volume Transacted',
-      value: '$4.2B+',
-      body: 'Secured transactions processed through verified software pipelines.',
-    },
-    {
-      label: 'Inference Response',
-      value: '<15ms',
-      body: 'Average multi-agent latency across enterprise workloads.',
-      highlight: true,
-    },
-  ],
 } as const;
 
 export const philosophyContent = {
-  eyebrow: 'Our Philosophy & Craft',
   title: 'Most intelligence initiatives stumble before production.',
   titleMuted: 'We design the solution.',
   quote:
@@ -76,14 +60,12 @@ export const philosophyContent = {
     'Our interdisciplinary methodology brings together the exactitude of aviation software and algorithmic engineering with fluid human interfaces. Every platform we deliver is built to remain resilient, performant, and completely aligned with your strategic vision.',
   ],
   image: {
-    src: philosophyPavilion,
-    alt: 'HALCER design studio and innovation pavilion in Zurich at dusk',
-    width: 512,
-    height: 382,
+    src: systemsArchitectureStudio,
+    alt: 'HALCER software systems architects collaborating in the Zurich innovation studio',
+    width: 1376,
+    height: 768,
   } satisfies ImageAsset,
-  imageCaption: 'Zurich Design Studio & Innovation Pavilion',
-  facilities: ['Continuous Research Environments', 'Specialized Compute Facilities'],
-  facilitiesHighlight: 'Global Delivery Hubs',
+  imageCaption: 'Zurich Systems Architecture & Engineering Studio',
 } as const;
 
 export const capabilitiesContent = {
@@ -98,18 +80,24 @@ export const capabilitiesContent = {
     {
       title: 'Applied AI & Generative Intelligence',
       subtitle: 'Autonomous Agents & Foundation Models',
+      /** Shown in the cursor-following preview on hover (desktop). Placeholder artwork. */
+      image: { src: practiceAppliedAi, alt: 'Abstract neural network graph' },
       body: 'Tailored enterprise model fine-tuning, deterministic retrieval pipelines with traceable citations, multi-agent collaboration, and inference latency optimization for seamless workflows.',
       tags: ['Custom Kernels', 'Agent Graphs', 'Vector Hybrid Indexing', 'Cache Optimization'],
     },
     {
       title: 'Distributed Systems & Platforms',
       subtitle: 'High-Throughput Backends',
+      /** Shown in the cursor-following preview on hover (desktop). Placeholder artwork. */
+      image: { src: practiceDistributed, alt: 'Abstract distributed node mesh' },
       body: 'Zero-overhead networking architecture, resilient Rust and Go services, distributed state consensus, and event streaming architectures capable of millions of transactions per second.',
       tags: ['Rust Services', 'Event Streaming', 'Modern Protocols', 'Concurrent Design'],
     },
     {
       title: 'Cloud & Security Architecture',
       subtitle: 'Sovereign & Zero-Trust Frameworks',
+      /** Shown in the cursor-following preview on hover (desktop). Placeholder artwork. */
+      image: { src: practiceCloudSecurity, alt: 'Abstract layered security perimeters' },
       body: 'Multi-cloud sovereign perimeters, private container orchestration, differential privacy guardrails, automated governance, and confidential enclave computing architectures.',
       tags: [
         'Confidential Compute',
@@ -121,6 +109,8 @@ export const capabilitiesContent = {
     {
       title: 'Advisory & Architectural Auditing',
       subtitle: 'Principal Leadership & Delivery',
+      /** Shown in the cursor-following preview on hover (desktop). Placeholder artwork. */
+      image: { src: practiceAdvisory, alt: 'Abstract performance telemetry chart' },
       body: 'Deployment of embedded principal systems squads, comprehensive technical evaluations, automated resilience testing suites, and production readiness certification.',
       tags: [
         'Resilience Auditing',
@@ -200,7 +190,6 @@ export interface Industry {
 }
 
 export const industriesContent = {
-  eyebrow: 'Domain Practices',
   titleStart: 'Sectors where',
   titleHighlight: 'technical precision',
   titleEnd: 'creates competitive advantage.',
@@ -272,7 +261,6 @@ export const insightsContent = {
     body: 'Zero-downtime consensus execution across sovereign multi-region clusters.',
   },
   flagship: {
-    badge: 'Flagship Architecture Note',
     title: 'Architecting High-Throughput Multi-Modal RAG Pipelines at 100k Queries/Sec.',
     body: 'Eliminating memory fragmentation in cross-modal vector buffers and scaling deterministic multi-tenant execution.',
     readTime: '24 min read',
@@ -288,7 +276,5 @@ export const contactContent = {
     'to discover how we can help',
     'your business to thrive!',
   ],
-  responseTime: 'Typical response within 24 hours',
-  assurances: ['Direct principal architect review', 'Strict NDA'],
   submit: 'Book consultation',
 } as const;

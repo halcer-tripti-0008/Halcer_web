@@ -7,6 +7,8 @@ export interface MotionConditions {
   isTablet: boolean;
   isDesktop: boolean;
   reduceMotion: boolean;
+  /** Mouse/trackpad (hover-capable, precise pointer). */
+  isFinePointer: boolean;
 }
 
 /**
@@ -35,6 +37,7 @@ export function createResponsiveAnimation(setup: ResponsiveAnimationSetup): gsap
       isTablet: MEDIA_QUERIES.tablet,
       isDesktop: MEDIA_QUERIES.desktop,
       reduceMotion: MEDIA_QUERIES.reducedMotion,
+      isFinePointer: MEDIA_QUERIES.finePointer,
     },
     (context) => setup(context.conditions as unknown as MotionConditions),
   );

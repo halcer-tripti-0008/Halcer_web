@@ -1,8 +1,5 @@
 import { Reveal } from '@/components/animations/Reveal';
-import { Pill } from '@/components/ui/Pill';
 import { Section } from '@/components/ui/Section';
-import { StatusDot } from '@/components/ui/StatusDot';
-import { COMPANY } from '@/constants/company';
 import { SECTION_IDS } from '@/constants/navigation';
 import { philosophyContent as content } from '@/content/home';
 
@@ -16,12 +13,9 @@ export function PhilosophySection() {
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-6">
         <Reveal className="flex flex-col justify-between lg:col-span-5 lg:pr-8">
           <div>
-            <Pill variant="light" className="mb-6 px-3.5 py-1.5">
-              <StatusDot tone="accent" />
-              <span>{content.eyebrow}</span>
-            </Pill>
             <h2
               id="philosophy-title"
+              data-reveal="lines"
               className="mb-6 font-display text-2xl leading-tight font-medium tracking-tight text-slate-900 sm:mb-8 sm:text-4xl lg:text-headline-xl lg:leading-(--text-headline-xl--line-height)"
             >
               {content.title}
@@ -43,11 +37,6 @@ export function PhilosophySection() {
               </figcaption>
             </figure>
           </div>
-
-          <div className="hidden space-y-1.5 border-t border-slate-200 pt-6 text-xs text-slate-500 lg:block">
-            <div className="font-medium text-slate-900">{COMPANY.studio}</div>
-            <div>{COMPANY.offices.join(' • ')}</div>
-          </div>
         </Reveal>
 
         <Reveal className="space-y-8 sm:space-y-10 lg:col-span-7">
@@ -58,26 +47,24 @@ export function PhilosophySection() {
           </div>
 
           <figure className="rounded-xl border border-slate-200 bg-slate-50 p-2 shadow-sm sm:p-3">
-            <div className="relative h-[220px] w-full overflow-hidden rounded-lg sm:h-[320px] md:h-[380px]">
+            <div
+              data-reveal="media"
+              className="relative h-[220px] w-full overflow-hidden rounded-lg sm:h-[320px] md:h-[380px]"
+            >
               <img
+                data-parallax
                 src={content.image.src}
                 alt={content.image.alt}
                 width={content.image.width}
                 height={content.image.height}
                 loading="lazy"
                 decoding="async"
-                className="size-full object-cover brightness-95 contrast-105 transition-transform duration-500 hover:scale-[1.01]"
+                className="absolute inset-x-0 -top-[8%] h-[116%] w-full object-cover brightness-95 contrast-105"
               />
               <figcaption className="absolute bottom-3 left-3 rounded-md border border-slate-200/80 bg-white/90 px-3.5 py-2 text-xs font-medium text-slate-900 shadow-md backdrop-blur-md">
                 {content.imageCaption}
               </figcaption>
             </div>
-            <ul className="flex flex-wrap items-center justify-between gap-2 px-2 py-3.5 text-xs text-slate-500 sm:px-4">
-              {content.facilities.map((facility) => (
-                <li key={facility}>{facility}</li>
-              ))}
-              <li className="font-semibold text-accent">{content.facilitiesHighlight}</li>
-            </ul>
           </figure>
         </Reveal>
       </div>

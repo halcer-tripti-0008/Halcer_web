@@ -12,4 +12,6 @@ export const MEDIA_QUERIES = {
   tablet: `(min-width: ${BREAKPOINTS.md}px) and (max-width: ${BREAKPOINTS.lg - 0.02}px)`,
   desktop: `(min-width: ${BREAKPOINTS.lg}px)`,
   reducedMotion: '(prefers-reduced-motion: reduce)',
+  /** Mouse/trackpad devices: cursor-driven effects run only here. */
+  finePointer: '(hover: hover) and (pointer: fine)',
 } as const;

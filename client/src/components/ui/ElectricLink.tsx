@@ -25,8 +25,9 @@ export function ElectricLink({ href, size, children, className, onClick }: Elect
     <SmartLink
       href={href}
       onClick={onClick}
+      data-magnetic="0.35"
       className={cn(
-        'inline-flex min-h-11 items-center justify-center text-ink-950 transition-[filter,box-shadow] duration-300 bg-electric hover:shadow-[0_0_32px_rgba(0,229,255,0.55)] hover:brightness-110',
+        'shine inline-flex min-h-11 items-center justify-center text-ink-950 transition-[filter,box-shadow] duration-300 bg-electric hover:shadow-[0_0_32px_rgba(0,229,255,0.55)] hover:brightness-110',
         sizes[size],
         className,
       )}

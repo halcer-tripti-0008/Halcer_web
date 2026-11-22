@@ -1,56 +1,53 @@
-import { m } from 'motion/react';
-import type { ReactNode } from 'react';
+import { useRef, type ReactNode } from 'react';
 
-import { slideUp, staggerContainer } from '@/animations/motion';
-import { DISTANCE, STAGGER } from '@/animations/tokens';
-
-const VIEWPORT = { once: true, amount: 0.2 } as const;
-const itemVariants = slideUp(DISTANCE.md);
+import { revealBlock, useGSAP } from '@/animations/gsap';
 
 interface RevealProps {
   children: ReactNode;
   className?: string;
 }
 
-/** Fades + slides its content up once, the first time it scrolls into view. */
+/**
+ * Reveals its direct children (fade up out of a soft blur) the first time it scrolls into
+ * view. Inside it, mark headings `data-reveal="lines"` for masked line reveals and image
+ * frames `data-reveal="media"` for clip-path wipes. See animations/gsap/reveal.ts.
+ */
 export function Reveal({ children, className }: RevealProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      if (ref.current) revealBlock(ref.current, 'block');
+    },
+    { scope: ref },
+  );
+
   return (
-    <m.div
-      className={className}
-      variants={itemVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={VIEWPORT}
-    >
+    <div ref={ref} className={className}>
       {children}
-    </m.div>
+    </div>
   );
 }
 
-interface RevealGroupProps extends RevealProps {
-  stagger?: number;
-}
+/** Container whose <RevealItem> children (cards) rise in sequence, with a slight 3D tip. */
+export function RevealGroup({ children, className }: RevealProps) {
+  const ref = useRef<HTMLDivElement>(null);
 
-/** Container that reveals its <RevealItem> children in sequence. */
-export function RevealGroup({ children, className, stagger = STAGGER.base }: RevealGroupProps) {
+  useGSAP(
+    () => {
+      if (ref.current) revealBlock(ref.current, 'stagger');
+    },
+    { scope: ref },
+  );
+
   return (
-    <m.div
-      className={className}
-      variants={staggerContainer(stagger)}
-      initial="hidden"
-      whileInView="visible"
-      viewport={VIEWPORT}
-    >
+    <div ref={ref} className={className}>
       {children}
-    </m.div>
+    </div>
   );
 }
 
-/** Child of <RevealGroup>; inherits the group's timing. */
+/** Child of <RevealGroup>: a layout wrapper the group animates as one unit. */
 export function RevealItem({ children, className }: RevealProps) {
-  return (
-    <m.div className={className} variants={itemVariants}>
-      {children}
-    </m.div>
-  );
+  return <div className={className}>{children}</div>;
 }
